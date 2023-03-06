@@ -7,7 +7,7 @@ import org.springframework.data.mongodb.core.mapping.Document;
 
 import java.util.List;
 /**
- * Buy DTO *  type Flat
+ * Buy Data
  *
  * @author Daniel Granados
  * @version 1.0.0

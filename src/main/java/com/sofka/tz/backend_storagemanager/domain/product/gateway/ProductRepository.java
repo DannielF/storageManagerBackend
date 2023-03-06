@@ -6,8 +6,9 @@ import reactor.core.publisher.Mono;
 
 public interface ProductRepository {
 
-    Flux<Product> getAllProducts();
-    Mono<Product> getById(Long id);
+    Flux<Product> findAllProducts();
+    Flux<Product> findAllPaginated(Integer skip, Integer limit);
+    Mono<Product> getById(String id);
     Mono<Product> saveProduct(Product product);
     Mono<Product> updateProduct(Product product);
 }
