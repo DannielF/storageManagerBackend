@@ -1,4 +1,4 @@
-package com.sofka.tz.backend_storagemanager.domain.product.entities;
+package com.sofka.tz.backend_storagemanager.domain.model.product.entities;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;

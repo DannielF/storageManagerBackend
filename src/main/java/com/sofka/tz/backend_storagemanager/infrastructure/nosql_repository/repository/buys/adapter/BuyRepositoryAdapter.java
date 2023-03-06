@@ -1,7 +1,7 @@
 package com.sofka.tz.backend_storagemanager.infrastructure.nosql_repository.repository.buys.adapter;
 
-import com.sofka.tz.backend_storagemanager.domain.buy.entities.Buy;
-import com.sofka.tz.backend_storagemanager.domain.buy.gateway.BuyRepository;
+import com.sofka.tz.backend_storagemanager.domain.model.buy.entities.Buy;
+import com.sofka.tz.backend_storagemanager.domain.model.buy.gateway.BuyRepository;
 import com.sofka.tz.backend_storagemanager.infrastructure.nosql_repository.repository.buys.ConverterBuy;
 import com.sofka.tz.backend_storagemanager.infrastructure.nosql_repository.repository.buys.data.BuyData;
 import com.sofka.tz.backend_storagemanager.infrastructure.nosql_repository.repository.buys.data.BuyDataRepository;

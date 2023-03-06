@@ -1,6 +1,6 @@
 package com.sofka.tz.backend_storagemanager.infrastructure.nosql_repository.repository.buys.data;
 
-import com.sofka.tz.backend_storagemanager.domain.product.entities.Product;
+import com.sofka.tz.backend_storagemanager.domain.model.product.entities.Product;
 import lombok.Data;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;

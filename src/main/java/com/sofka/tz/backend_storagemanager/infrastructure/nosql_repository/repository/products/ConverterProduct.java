@@ -1,6 +1,6 @@
 package com.sofka.tz.backend_storagemanager.infrastructure.nosql_repository.repository.products;
 
-import com.sofka.tz.backend_storagemanager.domain.product.entities.Product;
+import com.sofka.tz.backend_storagemanager.domain.model.product.entities.Product;
 import com.sofka.tz.backend_storagemanager.infrastructure.nosql_repository.repository.products.data.ProductData;
 import org.springframework.stereotype.Component;
 

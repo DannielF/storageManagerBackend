@@ -1,6 +1,6 @@
-package com.sofka.tz.backend_storagemanager.domain.product.gateway;
+package com.sofka.tz.backend_storagemanager.domain.model.product.gateway;
 
-import com.sofka.tz.backend_storagemanager.domain.product.entities.Product;
+import com.sofka.tz.backend_storagemanager.domain.model.product.entities.Product;
 import reactor.core.publisher.Flux;
 import reactor.core.publisher.Mono;
 

@@ -1,6 +1,6 @@
-package com.sofka.tz.backend_storagemanager.domain.buy.entities;
+package com.sofka.tz.backend_storagemanager.domain.model.buy.entities;
 
-import com.sofka.tz.backend_storagemanager.domain.product.entities.Product;
+import com.sofka.tz.backend_storagemanager.domain.model.product.entities.Product;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;

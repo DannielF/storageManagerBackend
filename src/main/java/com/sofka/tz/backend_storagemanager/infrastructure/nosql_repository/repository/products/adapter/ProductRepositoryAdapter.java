@@ -1,7 +1,7 @@
 package com.sofka.tz.backend_storagemanager.infrastructure.nosql_repository.repository.products.adapter;
 
-import com.sofka.tz.backend_storagemanager.domain.product.entities.Product;
-import com.sofka.tz.backend_storagemanager.domain.product.gateway.ProductRepository;
+import com.sofka.tz.backend_storagemanager.domain.model.product.entities.Product;
+import com.sofka.tz.backend_storagemanager.domain.model.product.gateway.ProductRepository;
 import com.sofka.tz.backend_storagemanager.infrastructure.nosql_repository.repository.products.ConverterProduct;
 import com.sofka.tz.backend_storagemanager.infrastructure.nosql_repository.repository.products.data.ProductData;
 import com.sofka.tz.backend_storagemanager.infrastructure.nosql_repository.repository.products.data.ProductDataRepository;
