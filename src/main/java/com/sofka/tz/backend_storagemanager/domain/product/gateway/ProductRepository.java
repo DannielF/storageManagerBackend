@@ -4,6 +4,13 @@ import com.sofka.tz.backend_storagemanager.domain.product.entities.Product;
 import reactor.core.publisher.Flux;
 import reactor.core.publisher.Mono;
 
+/**
+ * Product interface
+ *
+ * @author Daniel Granados
+ * @version 1.0.0
+ * @since 1.0.0
+ */
 public interface ProductRepository {
 
     Flux<Product> findAllProducts();

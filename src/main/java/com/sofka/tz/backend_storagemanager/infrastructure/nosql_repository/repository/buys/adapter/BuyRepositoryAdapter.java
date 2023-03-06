@@ -11,6 +11,13 @@ import org.springframework.stereotype.Repository;
 import reactor.core.publisher.Flux;
 import reactor.core.publisher.Mono;
 
+/**
+ * Buys Adapter
+ *
+ * @author Daniel Granados
+ * @version 1.0.0
+ * @since 1.0.0
+ */
 @Repository
 public class BuyRepositoryAdapter implements BuyRepository {
     private final BuyDataRepository repository;
@@ -39,6 +46,8 @@ public class BuyRepositoryAdapter implements BuyRepository {
 
     @Override
     public Mono<Buy> saveBuy(Buy buy) {
-        return null;
+        return Mono.just(buy).map(converterBuy::toBuyData)
+                .flatMap(repository::save)
+                .map(converterBuy::toEntityBuy);
     }
 }
