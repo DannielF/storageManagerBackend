@@ -1,0 +1,22 @@
+version: "3.8"
+services:
+
+  api_service:
+    build: .
+    restart: always
+    ports:
+      - "8080:8080"
+    depends_on:
+      - db
+  db:
+    image: docker.io/mysql
+    restart: always
+    volumes:
+      - db-data:/var/lib/mysql
+    environment:
+      - MYSQL_DATABASE=storage
+      - MYSQL_ROOT_PASSWORD=test
+    ports:
+      - "33061:3306"
+volumes:
+  db-data:
