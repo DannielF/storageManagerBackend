@@ -7,7 +7,7 @@ import reactor.core.publisher.Flux;
 import reactor.core.publisher.Mono;
 
 @RequiredArgsConstructor
-public class ManageBuyUsecase {
+public class ManageBuyUseCase {
 
     private final BuyRepository repository;
 
