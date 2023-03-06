@@ -5,6 +5,7 @@ import reactor.core.publisher.Flux;
 import reactor.core.publisher.Mono;
 
 public interface BuyRepository {
-    Flux<Buy> getAllBuys();
+    Flux<Buy> findAllBuys();
+    Flux<Buy> findAllBy(Integer skip, Integer limit);
     Mono<Buy> saveBuy(Buy buy);
 }

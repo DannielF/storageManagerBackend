@@ -1,7 +1,7 @@
-package com.sofka.tz.backend_storagemanager.infrastructure.sql_repository.repository.buys;
+package com.sofka.tz.backend_storagemanager.infrastructure.nosql_repository.repository.buys;
 
 import com.sofka.tz.backend_storagemanager.domain.buy.entities.Buy;
-import com.sofka.tz.backend_storagemanager.infrastructure.sql_repository.repository.buys.data.BuyData;
+import com.sofka.tz.backend_storagemanager.infrastructure.nosql_repository.repository.buys.data.BuyData;
 import org.springframework.stereotype.Component;
 /**
  * Buy Converter
