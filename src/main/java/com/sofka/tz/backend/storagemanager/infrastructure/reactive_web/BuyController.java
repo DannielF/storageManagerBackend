@@ -18,9 +18,9 @@ import reactor.core.publisher.Mono;
  * @version 0.0.1
  * @since 0.0.1
  */
-@RestController
+@RestControllerAdvice
 @RequiredArgsConstructor
-@RequestMapping(value = "/buy")
+@RequestMapping(value = "buy")
 public class BuyController {
 
     private static final Logger logger = LoggerFactory.getLogger(BuyController.class);
