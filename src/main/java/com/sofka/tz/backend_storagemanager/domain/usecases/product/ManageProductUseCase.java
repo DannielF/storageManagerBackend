@@ -37,4 +37,8 @@ public class ManageProductUseCase {
     public Mono<Product> updateProduct(Product product) {
         return repository.updateProduct(product);
     }
+
+    public Mono<Product> decreaseInInventory(Integer value, String id) {
+        return repository.decreaseInInventory(value, id);
+    }
 }

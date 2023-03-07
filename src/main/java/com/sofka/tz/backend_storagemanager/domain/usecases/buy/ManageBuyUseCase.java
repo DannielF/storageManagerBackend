@@ -2,6 +2,8 @@ package com.sofka.tz.backend_storagemanager.domain.usecases.buy;
 
 import com.sofka.tz.backend_storagemanager.domain.model.buy.entities.Buy;
 import com.sofka.tz.backend_storagemanager.domain.model.buy.gateway.BuyRepository;
+import com.sofka.tz.backend_storagemanager.domain.model.exceptions.BusinessException;
+import com.sofka.tz.backend_storagemanager.domain.usecases.product.ManageProductUseCase;
 import lombok.RequiredArgsConstructor;
 import reactor.core.publisher.Flux;
 import reactor.core.publisher.Mono;
@@ -17,16 +19,31 @@ import reactor.core.publisher.Mono;
 public class ManageBuyUseCase {
 
     private final BuyRepository repository;
+    private final ManageProductUseCase productUseCase;
 
     public Flux<Buy> findAllBuys() {
         return repository.findAllBuys();
     }
 
     public Flux<Buy> findAllPaginate(Integer skip, Integer limit) {
-        return repository.findAllBy(skip, limit);
+        return repository.findAllPaginate(skip, limit);
     }
 
     public Mono<Buy> saveBuy(Buy buy){
-        return repository.saveBuy(buy);
+        return Flux.fromIterable(buy.getProducts())
+                .flatMap(productSold -> productUseCase.findById(productSold.getId())
+                .map(product -> {
+                    if (product.getEnabled() == Boolean.FALSE) {
+                        throw new BusinessException("Product unavailable");
+                    }
+                    if (product.getInInventory() == 0) {
+                        throw new BusinessException("Product out of stock");
+                    }
+                    return product;
+                }).flatMap(product -> {
+                    var newQuantity = product.getInInventory() - productSold.getQuantity();
+                    return productUseCase.decreaseInInventory(newQuantity, product.getId());
+                }).flatMap(product -> repository.saveBuy(buy)))
+                .next();
     }
 }

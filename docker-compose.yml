@@ -14,3 +14,9 @@ services:
     container_name: mongodb
     ports:
       - "2717:27017"
+    environment:
+      - MONGO_INITDB_DATABASE=storage
+    volumes:
+      - type: bind
+        source: ./data
+        target: /data/db

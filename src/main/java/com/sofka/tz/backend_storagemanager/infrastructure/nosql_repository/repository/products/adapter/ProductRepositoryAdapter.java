@@ -71,4 +71,12 @@ public class ProductRepositoryAdapter implements ProductRepository {
         return mongoTemplate.findAndModify(new Query(criteria), update, ProductData.class)
                 .map(converterProduct::toEntityProduct);
     }
+
+    @Override
+    public Mono<Product> decreaseInInventory(Integer value, String id) {
+        var criteria = Criteria.where("_id").is(new ObjectId(id));
+        Update update = new Update().set("inInventory", value);
+        return mongoTemplate.findAndModify(new Query(criteria), update, ProductData.class)
+                .map(converterProduct::toEntityProduct);
+    }
 }

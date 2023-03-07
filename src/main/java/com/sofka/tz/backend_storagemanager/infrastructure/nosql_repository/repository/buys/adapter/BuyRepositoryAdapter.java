@@ -36,7 +36,7 @@ public class BuyRepositoryAdapter implements BuyRepository {
     }
 
     @Override
-    public Flux<Buy> findAllBy(Integer skip, Integer limit) {
+    public Flux<Buy> findAllPaginate(Integer skip, Integer limit) {
         Query query = new Query();
         query.skip(skip);
         query.limit(limit);

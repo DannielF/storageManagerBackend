@@ -13,6 +13,6 @@ import reactor.core.publisher.Mono;
  */
 public interface BuyRepository {
     Flux<Buy> findAllBuys();
-    Flux<Buy> findAllBy(Integer skip, Integer limit);
+    Flux<Buy> findAllPaginate(Integer skip, Integer limit);
     Mono<Buy> saveBuy(Buy buy);
 }
