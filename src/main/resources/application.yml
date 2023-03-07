@@ -4,6 +4,6 @@ spring:
   data:
     mongodb:
       host: mongodb
-      port: 27017
+      port: 2717
       database: storage
 
