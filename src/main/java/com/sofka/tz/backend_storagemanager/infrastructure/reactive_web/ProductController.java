@@ -48,13 +48,13 @@ public class ProductController {
     @PostMapping
     @ResponseStatus(HttpStatus.CREATED)
     private Mono<Product> saveProduct(@RequestBody Product product) {
-        logger.info("Created {}", product.toBuilder());
+        logger.info("Product created {}", product.toBuilder());
         return useCase.saveProduct(product);
     }
     @PutMapping
     @ResponseStatus(HttpStatus.OK)
     private Mono<Product> updateProduct(@RequestBody Product product) {
-        logger.info("Updated {}", product.toBuilder());
+        logger.info("Product updated {}", product.toBuilder());
         return useCase.updateProduct(product);
     }
 }
