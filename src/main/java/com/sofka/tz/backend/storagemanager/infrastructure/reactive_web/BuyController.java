@@ -18,7 +18,7 @@ import reactor.core.publisher.Mono;
  * @version 0.0.1
  * @since 0.0.1
  */
-@RestControllerAdvice
+@RestController
 @RequiredArgsConstructor
 @RequestMapping(value = "/buy")
 public class BuyController {
@@ -28,18 +28,18 @@ public class BuyController {
 
     @GetMapping
     @ResponseStatus(HttpStatus.OK)
-    private Flux<Buy> findAll() {
+    public Flux<Buy> findAll() {
         return useCase.findAllBuys();
     }
 
     @GetMapping("/paginate/{skip}:{limit}")
-    private Flux<Buy> findAllPaginate(@PathVariable Integer skip, @PathVariable Integer limit) {
+    public Flux<Buy> findAllPaginate(@PathVariable Integer skip, @PathVariable Integer limit) {
         return useCase.findAllPaginate(skip, limit);
     }
 
     @PostMapping
     @ResponseStatus(HttpStatus.CREATED)
-    private Mono<Buy> saveBuy(@RequestBody Buy buy) {
+    public Mono<Buy> saveBuy(@RequestBody Buy buy) {
         logger.info("Buy created {}", buy.toBuilder());
         return useCase.saveBuy(buy);
     }

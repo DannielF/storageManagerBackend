@@ -18,7 +18,7 @@ import reactor.core.publisher.Mono;
  * @version 0.0.1
  * @since 0.0.1
  */
-@RestControllerAdvice
+@RestController
 @RequiredArgsConstructor
 @RequestMapping(value = "/product")
 public class ProductController {
@@ -28,31 +28,31 @@ public class ProductController {
 
     @GetMapping
     @ResponseStatus(HttpStatus.OK)
-    private Flux<Product> findAll() {
+    public Flux<Product> findAll() {
         return useCase.findAll();
     }
 
     @GetMapping("/paginate/{skip}:{limit}")
     @ResponseStatus(HttpStatus.OK)
-    private Flux<Product> findAllPaginate(@PathVariable Integer skip,@PathVariable Integer limit) {
+    public Flux<Product> findAllPaginate(@PathVariable Integer skip,@PathVariable Integer limit) {
         return useCase.findAllPaginate(skip, limit);
     }
 
     @GetMapping("/{id}")
     @ResponseStatus(HttpStatus.OK)
-    private Mono<Product> findById(@PathVariable String id) {
+    public Mono<Product> findById(@PathVariable String id) {
         return useCase.findById(id);
     }
 
     @PostMapping
     @ResponseStatus(HttpStatus.CREATED)
-    private Mono<Product> saveProduct(@RequestBody Product product) {
+    public Mono<Product> saveProduct(@RequestBody Product product) {
         logger.info("Product created {}", product.toBuilder());
         return useCase.saveProduct(product);
     }
     @PutMapping
     @ResponseStatus(HttpStatus.OK)
-    private Mono<Product> updateProduct(@RequestBody Product product) {
+    public Mono<Product> updateProduct(@RequestBody Product product) {
         logger.info("Product updated {}", product.toBuilder());
         return useCase.updateProduct(product);
     }

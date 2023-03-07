@@ -3,7 +3,5 @@ spring:
     livereload.enabled: true
   data:
     mongodb:
-      host: mongodb
-      port: 2717
-      database: storage
+      uri: mongodb://localhost:2717/storage
 
