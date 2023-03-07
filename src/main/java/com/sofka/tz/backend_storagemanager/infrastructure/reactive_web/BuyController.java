@@ -24,8 +24,8 @@ import reactor.core.publisher.Mono;
 @CrossOrigin(origins = "*")
 public class BuyController {
 
-    private final ManageBuyUseCase useCase;
     private static final Logger logger = LoggerFactory.getLogger(BuyController.class);
+    private final ManageBuyUseCase useCase;
 
     @GetMapping
     @ResponseStatus(HttpStatus.OK)
