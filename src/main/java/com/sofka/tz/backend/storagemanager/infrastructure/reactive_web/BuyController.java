@@ -2,7 +2,6 @@ package com.sofka.tz.backend.storagemanager.infrastructure.reactive_web;
 
 import com.sofka.tz.backend.storagemanager.domain.model.buy.entities.Buy;
 import com.sofka.tz.backend.storagemanager.domain.usecases.buy.ManageBuyUseCase;
-import io.swagger.v3.oas.annotations.parameters.RequestBody;
 import lombok.RequiredArgsConstructor;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -23,8 +22,8 @@ import reactor.core.publisher.Mono;
 @RequestMapping(value = "buy")
 public class BuyController {
 
-    private static final Logger logger = LoggerFactory.getLogger(BuyController.class);
     private final ManageBuyUseCase useCase;
+    private static final Logger logger = LoggerFactory.getLogger(BuyController.class);
 
     @GetMapping
     @ResponseStatus(HttpStatus.OK)

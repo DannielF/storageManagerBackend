@@ -41,4 +41,8 @@ public class ManageProductUseCase {
     public Mono<Product> decreaseInInventory(Integer value, String id) {
         return repository.decreaseInInventory(value, id);
     }
+
+    public Mono<Void> deleteById(String id) {
+        return repository.deleteById(id);
+    }
 }

@@ -2,7 +2,6 @@ package com.sofka.tz.backend.storagemanager.infrastructure.reactive_web;
 
 import com.sofka.tz.backend.storagemanager.domain.model.product.entities.Product;
 import com.sofka.tz.backend.storagemanager.domain.usecases.product.ManageProductUseCase;
-import io.swagger.v3.oas.annotations.parameters.RequestBody;
 import lombok.RequiredArgsConstructor;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -23,8 +22,8 @@ import reactor.core.publisher.Mono;
 @RequestMapping(value = "product")
 public class ProductController {
 
-    private static final Logger logger = LoggerFactory.getLogger(ProductController.class);
     private final ManageProductUseCase useCase;
+    private static final Logger logger = LoggerFactory.getLogger(ProductController.class);
 
     @GetMapping
     @ResponseStatus(HttpStatus.OK)
@@ -34,7 +33,7 @@ public class ProductController {
 
     @GetMapping("/paginate/{skip}:{limit}")
     @ResponseStatus(HttpStatus.OK)
-    public Flux<Product> findAllPaginate(@PathVariable Integer skip,@PathVariable Integer limit) {
+    public Flux<Product> findAllPaginate(@PathVariable Integer skip, @PathVariable Integer limit) {
         return useCase.findAllPaginate(skip, limit);
     }
 
@@ -50,10 +49,16 @@ public class ProductController {
         logger.info("Product created {}", product.toBuilder());
         return useCase.saveProduct(product);
     }
+
     @PutMapping
     @ResponseStatus(HttpStatus.OK)
     public Mono<Product> updateProduct(@RequestBody Product product) {
         logger.info("Product updated {}", product.toBuilder());
         return useCase.updateProduct(product);
+    }
+
+    @DeleteMapping("/{id}")
+    public Mono<Void> deleteById(@PathVariable String id) {
+        return useCase.deleteById(id);
     }
 }

@@ -1,5 +1,6 @@
 package com.sofka.tz.backend.storagemanager.infrastructure.nosql_repository.repository.products.adapter;
 
+import com.sofka.tz.backend.storagemanager.domain.model.exceptions.BusinessException;
 import com.sofka.tz.backend.storagemanager.domain.model.product.gateway.ProductRepository;
 import com.sofka.tz.backend.storagemanager.infrastructure.nosql_repository.repository.products.ConverterProduct;
 import com.sofka.tz.backend.storagemanager.infrastructure.nosql_repository.repository.products.data.ProductData;
@@ -78,5 +79,10 @@ public class ProductRepositoryAdapter implements ProductRepository {
         Update update = new Update().set("inInventory", value);
         return mongoTemplate.findAndModify(new Query(criteria), update, ProductData.class)
                 .map(converterProduct::toEntityProduct);
+    }
+
+    @Override
+    public Mono<Void> deleteById(String id) {
+        return repository.deleteById(id).switchIfEmpty(Mono.error(new BusinessException("Product not found")));
     }
 }

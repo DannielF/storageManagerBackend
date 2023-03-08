@@ -2,6 +2,7 @@ package com.sofka.tz.backend.storagemanager.infrastructure.nosql_repository.repo
 
 import com.sofka.tz.backend.storagemanager.domain.model.buy.entities.Buy;
 import com.sofka.tz.backend.storagemanager.domain.model.buy.gateway.BuyRepository;
+import com.sofka.tz.backend.storagemanager.domain.model.exceptions.BusinessException;
 import com.sofka.tz.backend.storagemanager.infrastructure.nosql_repository.repository.buys.ConverterBuy;
 import com.sofka.tz.backend.storagemanager.infrastructure.nosql_repository.repository.buys.data.BuyData;
 import com.sofka.tz.backend.storagemanager.infrastructure.nosql_repository.repository.buys.data.BuyDataRepository;
@@ -54,6 +55,6 @@ public class BuyRepositoryAdapter implements BuyRepository {
     @Override
     public Mono<Void> deleteBuy(String id) {
         return repository.deleteById(id)
-                .switchIfEmpty(Mono.error(new Throwable("Id not found")));
+                .switchIfEmpty(Mono.error(new BusinessException("BuyId not found")));
     }
 }

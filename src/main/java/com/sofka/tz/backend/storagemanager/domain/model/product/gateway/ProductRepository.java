@@ -19,4 +19,5 @@ public interface ProductRepository {
     Mono<Product> saveProduct(Product product);
     Mono<Product> updateProduct(Product product);
     Mono<Product> decreaseInInventory(Integer value, String id);
+    Mono<Void> deleteById(String id);
 }
