@@ -39,6 +39,18 @@ class ManageProductUseCaseTest {
 
     @Test
     void findAllPaginate() {
+        var expectedProduct = new Product();
+
+        when(repository
+                .findAllPaginated(0, 1)).thenReturn(Flux.just(expectedProduct));
+
+        var result = productUseCase.findAllPaginate(0, 1);
+
+        StepVerifier.create(result)
+                .expectNext(expectedProduct)
+                .expectComplete()
+                .verify();
+
     }
 
     @Test
