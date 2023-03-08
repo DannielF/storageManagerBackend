@@ -17,7 +17,7 @@ import reactor.core.publisher.Mono;
  * @version 0.0.1
  * @since 0.0.1
  */
-@RestControllerAdvice
+@RestController
 @RequiredArgsConstructor
 @RequestMapping(value = "buy")
 public class BuyController {
