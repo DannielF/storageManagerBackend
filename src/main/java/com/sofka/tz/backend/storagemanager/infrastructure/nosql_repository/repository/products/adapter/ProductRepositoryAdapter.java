@@ -51,7 +51,9 @@ public class ProductRepositoryAdapter implements ProductRepository {
 
     @Override
     public Mono<Product> getById(String id) {
-        return repository.findById(id).map(converterProduct::toEntityProduct);
+        return repository.findById(id)
+                .map(converterProduct::toEntityProduct)
+                .switchIfEmpty(Mono.error(new BusinessException("Product not found")));
     }
 
     @Override
@@ -83,6 +85,6 @@ public class ProductRepositoryAdapter implements ProductRepository {
 
     @Override
     public Mono<Void> deleteById(String id) {
-        return repository.deleteById(id).switchIfEmpty(Mono.error(new BusinessException("Product not found")));
+        return repository.deleteById(id);
     }
 }
