@@ -39,6 +39,9 @@ public class ManageBuyUseCase {
                     if (product.getInInventory() == 0) {
                         throw new BusinessException("Product out of stock");
                     }
+                    if (productSold.getQuantity() > product.getInInventory()) {
+                        throw new BusinessException("There is not such quantity in inventory");
+                    }
                     return product;
                 }).flatMap(product -> {
                     var newQuantity = product.getInInventory() - productSold.getQuantity();

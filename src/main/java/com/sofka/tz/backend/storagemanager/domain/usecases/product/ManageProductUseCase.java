@@ -1,5 +1,6 @@
 package com.sofka.tz.backend.storagemanager.domain.usecases.product;
 
+import com.sofka.tz.backend.storagemanager.domain.model.exceptions.BusinessException;
 import com.sofka.tz.backend.storagemanager.domain.model.product.gateway.ProductRepository;
 import com.sofka.tz.backend.storagemanager.domain.model.product.entities.Product;
 import lombok.RequiredArgsConstructor;
@@ -31,10 +32,19 @@ public class ManageProductUseCase {
     }
 
     public Mono<Product> saveProduct(Product product) {
+        if (product.getMin() > product.getMax()) {
+            throw new BusinessException("Min quantity must be larger than max quantity");
+        }
+        if (product.getInInventory() < product.getMin()) {
+            throw new BusinessException("Inventory must be larger than min quantity");
+        }
         return repository.saveProduct(product);
     }
 
     public Mono<Product> updateProduct(Product product) {
+        if (product.getMin() > product.getMax()) {
+            throw new BusinessException("Min quantity must be larger than max quantity");
+        }
         return repository.updateProduct(product);
     }
 
