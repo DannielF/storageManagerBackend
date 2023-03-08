@@ -50,4 +50,10 @@ public class BuyRepositoryAdapter implements BuyRepository {
                 .flatMap(repository::save)
                 .map(converterBuy::toEntityBuy);
     }
+
+    @Override
+    public Mono<Void> deleteBuy(String id) {
+        return repository.deleteById(id)
+                .switchIfEmpty(Mono.error(new Throwable("Id not found")));
+    }
 }

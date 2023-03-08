@@ -1,6 +1,6 @@
 package com.sofka.tz.backend.storagemanager.infrastructure.nosql_repository.repository.buys.data;
 
-import org.springframework.data.mongodb.repository.ReactiveMongoRepository;
+import org.springframework.data.repository.reactive.ReactiveCrudRepository;
 
 /**
  * Buys repository
@@ -9,5 +9,5 @@ import org.springframework.data.mongodb.repository.ReactiveMongoRepository;
  * @version 1.0.0
  * @since 1.0.0
  */
-public interface BuyDataRepository extends ReactiveMongoRepository<BuyData, String> {
+public interface BuyDataRepository extends ReactiveCrudRepository<BuyData, String> {
 }

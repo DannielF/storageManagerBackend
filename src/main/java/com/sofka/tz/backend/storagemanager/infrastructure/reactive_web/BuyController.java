@@ -43,4 +43,10 @@ public class BuyController {
         logger.info("Buy created {}", buy.toBuilder());
         return useCase.saveBuy(buy);
     }
+
+    @DeleteMapping("/{id}")
+    @ResponseStatus(HttpStatus.NO_CONTENT)
+    public Mono<Void> deleteById(@PathVariable String id) {
+        return useCase.deleteById(id);
+    }
 }

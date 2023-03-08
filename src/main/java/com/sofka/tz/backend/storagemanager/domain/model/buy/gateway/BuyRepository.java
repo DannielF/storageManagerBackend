@@ -15,4 +15,5 @@ public interface BuyRepository {
     Flux<Buy> findAllBuys();
     Flux<Buy> findAllPaginate(Integer skip, Integer limit);
     Mono<Buy> saveBuy(Buy buy);
+    Mono<Void> deleteBuy(String id);
 }

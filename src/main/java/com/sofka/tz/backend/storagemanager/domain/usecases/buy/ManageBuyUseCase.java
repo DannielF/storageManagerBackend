@@ -46,4 +46,8 @@ public class ManageBuyUseCase {
                 }).flatMap(product -> repository.saveBuy(buy)))
                 .next();
     }
+
+    public Mono<Void> deleteById(String id) {
+        return repository.deleteBuy(id);
+    }
 }
